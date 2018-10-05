@@ -1,0 +1,9 @@
+channel sync, in, out
+
+CONC = IN [| {| sync |} |] OUT
+IN = in -> sync -> STOP
+OUT = sync -> out -> STOP
+
+SEQ = in -> sync -> out -> STOP
+
+assert SEQ [FD= CONC

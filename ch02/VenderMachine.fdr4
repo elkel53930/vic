@@ -1,0 +1,11 @@
+channel coin, tea, coffee
+
+VMD  = coin -> ((tea -> VMD) [] (coffee -> VMD))
+VMND = (coin -> tea -> VMND) [] (coin -> coffee -> VMND)
+VMI  = coin -> ((tea -> VMI) |~| (coffee -> VMI))
+
+-- check
+assert VMD [FD= VMND
+assert VMND [FD= VMD
+assert VMI [FD= VMND
+assert VMND [FD= VMI
